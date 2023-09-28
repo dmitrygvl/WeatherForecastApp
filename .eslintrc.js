@@ -39,5 +39,13 @@ module.exports = {
     "prefer-promise-reject-errors": "off",
     "no-await-in-loop": "off",
     "func-names": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        devDependencies: true,
+        optionalDependencies: false,
+        peerDependencies: false,
+      },
+    ],
   },
 };
