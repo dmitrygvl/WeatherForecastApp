@@ -2,6 +2,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require("webpack");
 
 module.exports = {
@@ -23,12 +24,17 @@ module.exports = {
       filename: "index.html", // название выходного файла
     }),
     new CleanWebpackPlugin(),
-    new CopyWebpackPlugin([
-      {
-        from: path.resolve(__dirname, "src/assets/img/favicon.ico"),
-        to: path.resolve(__dirname, "dist"),
-      },
-    ]),
+    new MiniCssExtractPlugin({
+      filename: "[name].[hash].css",
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: "src/assets/img/favicon.ico",
+          to: "",
+        },
+      ],
+    }),
   ],
   module: {
     rules: [
@@ -41,7 +47,7 @@ module.exports = {
       },
       {
         test: /(\.css)$/,
-        use: ["style-loader", "css-loader"],
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
       {
         test: /\.html$/,
@@ -49,6 +55,10 @@ module.exports = {
       },
       {
         test: /\.(ttf|woff|woff2|eot)$/i,
+        use: ["file-loader"],
+      },
+      {
+        test: /\.(png|svg|jpg|gif|ico)$/i,
         use: ["file-loader"],
       },
       // {
