@@ -21,6 +21,7 @@
     "@babel/preset-env": "^7.22.20",
     "@types/jest": "^29.5.5",
     "babel-jest": "^29.7.0",
+    "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.8.1",
     "eslint": "^8.50.0",
     "eslint-config-airbnb-base": "^15.0.0",

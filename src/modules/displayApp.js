@@ -1,4 +1,4 @@
-export function drawWeatherApp(wrapperEl) {
+export function displayApp(wrapperEl) {
   wrapperEl.innerHTML = `
     <h1>Weather Forecast App</h1>
 
