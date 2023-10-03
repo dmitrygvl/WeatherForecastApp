@@ -4,7 +4,7 @@ export function displayApp(wrapperEl) {
 
     <form>
       <input class="input-form" name="cityName" required autofocus placeholder="Введите название города" />
-      <button>Показать</button>
+      <button class="button-form" type="submit">Показать</button>
     </form>
 
     <section class="history container-history"></section>
