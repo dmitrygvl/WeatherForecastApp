@@ -3,7 +3,7 @@ export function displayApp(wrapperEl) {
     <h1>Прогноз погоды</h1>
 
     <form>
-      <input class="input-form" name="cityName" required autofocus placeholder="Введите город" />
+      <input name="cityName" class="input-form" required autofocus placeholder="Введите город" />
       <button class="button-form" type="submit">Показать</button>
     </form>
 
