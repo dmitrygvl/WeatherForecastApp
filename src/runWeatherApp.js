@@ -1,10 +1,10 @@
 import { displayApp } from "./modules/displayApp";
-import { getNariveLocationName } from "./modules/getNariveLocationName";
+import { getNativeCityName } from "./modules/getNativeCityName";
 
 export async function runWeatherApp(el) {
   displayApp(el);
 
-  const nativeLocationName = await getNariveLocationName();
+  const nativeCityName = await getNativeCityName();
 
-  console.log({ nativeLocationName });
+  console.log({ nativeCityName });
 }
