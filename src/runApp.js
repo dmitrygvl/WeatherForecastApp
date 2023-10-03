@@ -1,8 +1,9 @@
 import { displayApp } from "./modules/displayApp";
 import { getNativeCityName } from "./modules/getNativeCityName";
 import { getWeather } from "./modules/getWeather";
+import { displayInfo } from "./modules/displayInfo";
 
-export async function runWeatherApp(el) {
+export async function runApp(el) {
   displayApp(el);
 
   const infoWrapper = document.querySelector(".info");
@@ -11,14 +12,15 @@ export async function runWeatherApp(el) {
   const historyWrapper = document.querySelector(".history");
   const recentSearch = JSON.parse(localStorage.getItem("recentSearch")) || [];
 
-  form.addEventListener("submit", (ev) => {
-    alert(input.value);
+  form.addEventListener("submit", async (ev) => {
     ev.preventDefault();
   });
 
   const nativeCityName = await getNativeCityName();
 
-  const currentLocationData = getWeather(nativeCityName);
+  const weatherData = getWeather(nativeCityName);
 
-  console.log({ nativeCityName, currentLocationData });
+  displayInfo(infoWrapper, weatherData);
+
+  console.log({ nativeCityName, weatherData });
 }

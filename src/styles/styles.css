@@ -14,3 +14,9 @@ body {
 h1 {
   text-align: center;
 }
+
+.info {
+  border: 1px solid gray;
+  padding: 5px;
+  margin-top: 10px;
+}
