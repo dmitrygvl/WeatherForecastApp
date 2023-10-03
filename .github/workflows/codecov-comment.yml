@@ -1,37 +1,30 @@
 name: Codecov
-
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+on: pull_request
 
 jobs:
-  codecov:
+  run:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
+      - name: Npm install
+        run: |
+          npm install --legacy-peer-deps
 
-      - name: Install dependencies
-        run: npm install
+      - name: Lint fix
+        run: |
+          npm run lint:fix
 
-      - name: Reset Snapshots
-        run: npm test -- -u
+      - name: Lint
+        run: |
+          npm run lint
 
-      - name: Run tests and generate coverage report
-        run: npm run test -- --coverage
+      - name: Test
+        run: |
+          npm run test -- --coverage
 
-      - name: Upload coverage report to Codecov
+      - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: coverage/clover.xml, coverage/coverage-final.json, coverage/lcov.info
