@@ -1,12 +1,14 @@
 export function displayApp(wrapperEl) {
   wrapperEl.innerHTML = `
-    <h1>Weather Forecast App</h1>
+    <h1>Прогноз погоды</h1>
 
     <form>
-      <input name="cityName" required autofocus />
-      <button>Show weather</button>
+      <input class="input-form" name="cityName" required autofocus placeholder="Введите название города" />
+      <button>Показать</button>
     </form>
 
-    <div class="info"></div>
+    <section class="history container-history"></section>
+    
+    <section class="info container-info"></section>
   `;
 }
