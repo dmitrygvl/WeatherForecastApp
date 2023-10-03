@@ -1,1 +1,1 @@
-export function displayWeatherInfo(el) {}
+export function displayWeatherInfo(el, data) {}

@@ -4,7 +4,7 @@ describe("Test getNativeCityName function", () => {
   beforeEach(() => {
     global.fetch = jest.fn().mockImplementation(() =>
       Promise.resolve({
-        json: () => Promise.resolve({ city: "Moscow" }),
+        json: () => Promise.resolve({ city: "Kaluga" }),
       }),
     );
   });
@@ -22,6 +22,6 @@ describe("Test getNativeCityName function", () => {
 
   it("should return the correct city name from the response", async () => {
     const result = await getNativeCityName();
-    expect(result).toEqual("Moscow");
+    expect(result).toEqual("Kaluga");
   });
 });
