@@ -5,8 +5,8 @@
   "private": true,
   "scripts": {
     "test": "jest",
-    "lint": "prettier --check . && eslint .",
-    "lint:fix": "prettier --write . && eslint . --fix",
+    "lint": "prettier --check . && eslint . && stylelint \"**/*.css\"",
+    "lint:fix": "prettier --write . && eslint . --fix  && stylelint \"**/*.css\" --fix",
     "prepare": "husky install",
     "start": "webpack-dev-server --mode development --open",
     "dev": "webpack --mode development",
@@ -43,6 +43,7 @@
     "style-loader": "^3.3.3",
     "stylelint": "^15.10.3",
     "stylelint-config-standard": "^34.0.0",
+    "stylelint-prettier": "^4.0.2",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1"
@@ -52,6 +53,7 @@
       "prettier --write",
       "eslint --fix"
     ],
-    "*.{css,md,yml}": "prettier --write"
+    "*.{css,md,yml}": "prettier --write",
+    "*.css": "stylelint --fix"
   }
 }

@@ -1,7 +1,7 @@
-@import "roboto.css";
+@import url("roboto.css");
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: Roboto, sans-serif;
   background-color: lightblue;
 }
 
