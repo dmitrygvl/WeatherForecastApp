@@ -2,6 +2,7 @@ import { displayApp } from "./modules/displayApp";
 import { getNativeCityName } from "./modules/getNativeCityName";
 import { getWeather } from "./modules/getWeather";
 import { displayInfo } from "./modules/displayInfo";
+import { displayCityHistory } from "./modules/CityHistory";
 
 export async function runApp(el) {
   displayApp(el);
@@ -9,6 +10,18 @@ export async function runApp(el) {
   const input = document.querySelector(".input-form");
   const form = document.querySelector("form");
   const infoWrapper = document.querySelector(".info");
+  const historyWrapper = document.querySelector(".history");
+  const recentSearch = JSON.parse(localStorage.getItem("recentSearch")) || [];
+
+  function rewriteCityHistory(cityName) {
+    if (recentSearch.length > 10) {
+      recentSearch.shift();
+    }
+    if (!recentSearch.includes(cityName)) {
+      recentSearch.push(cityName);
+      localStorage.setItem("recentSearch", JSON.stringify(recentSearch));
+    }
+  }
 
   async function getAndDisplayInfo(cityName) {
     try {
