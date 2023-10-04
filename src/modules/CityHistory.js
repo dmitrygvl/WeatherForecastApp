@@ -1,11 +1,13 @@
 // import { readCities } from "./CityStorage";
 
 export function displayCityHistory(el, cityStorage) {
+  el.innerHTML = ``;
+
   cityStorage.forEach((cityQueried) => {
     const cityLink = document.createElement("a");
     cityLink.innerText = cityQueried;
     cityLink.setAttribute("href", "#");
-    cityLink.setAttribute("href", "#");
+    cityLink.setAttribute("class", "cityLink");
 
     const historyItem = document.createElement("p");
     historyItem.setAttribute("class", "link-text");

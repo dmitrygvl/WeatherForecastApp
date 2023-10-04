@@ -11,6 +11,9 @@ export function displayApp(wrapperEl) {
 
     <section class="history container-history"></section>
     
-    <section class="info"></section>
+    <section class="info container-info"></section>
+
+    <section class="history container-history"></section>
+
   `;
 }
