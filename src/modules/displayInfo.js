@@ -5,17 +5,6 @@ export function displayInfo(el, data) {
 
   const dateNow = new Date();
 
-  // el.innerHTML = `
-  //   <h2>${data.name}</h2>
-  //   <p class="date">${dateNow.toLocaleDateString('ru-RU')}</p>
-  //   <p class="weather-text">Погода: ${data.weather[0].main} - ${data.weather[0].description}</p>
-  //   <div class="box-image"><img class="icon-weather" src="https://openweathermap.org/img/wn/${
-  //     data.weather[0].icon
-  //   }@2x.png" alt="Icon weather"></img></div>
-  //   <div>Температура: ${data.main.temp}°C</div>
-  //   <div class="box-image></div><img class="city-map" src= "${mapUrl}" alt="Yandex map"/>
-  // `;
-
   el.innerHTML = `
   <h2>${data.name}</h2>
   <p class="date">${dateNow.toLocaleDateString("ru-RU")}</p>
@@ -29,6 +18,6 @@ export function displayInfo(el, data) {
   }@2x.png" alt="Icon weather"></img></div>
 
   <div><b>Температура</b> ${data.main.temp}°C</div>
-  <image src="${mapUrl}" />
+  <div class="box-image"></div><image src="${mapUrl}" /></div>
 `;
 }
