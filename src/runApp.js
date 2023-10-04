@@ -29,6 +29,14 @@ export async function runApp(el) {
       displayInfo(infoWrapper, weatherData);
       addCityToHistory(cityName);
       displayCityHistory(historyWrapper, recentSearch);
+      const links = document.querySelectorAll("a");
+      links.forEach((link) => {
+        link.addEventListener("click", async (ev) => {
+          ev.preventDefault();
+          const cityNameAtHistory = link.innerText;
+          await getAndDisplayWeather(cityNameAtHistory);
+        });
+      });
     } catch (getAndDisplayWeatherError) {
       console.error({ getAndDisplayWeatherError });
       infoWrapper.innerHTML = "Кажется, такого города не существует";
@@ -46,21 +54,3 @@ export async function runApp(el) {
 
   await getAndDisplayWeather(nativeCityName);
 }
-
-// async function getAndDisplayInfo(cityName) {
-//   try {
-//     const weatherData = await getWeather(cityName);
-//     displayInfo(infoWrapper, weatherData);
-//   } catch (getAndDisplayInfoError) {
-//     infoWrapper.innerHTML = "Something went wrong";
-//   }
-// }
-
-// form.addEventListener("submit", async (ev) => {
-//   ev.preventDefault();
-
-//   getAndDisplayInfo(input.value);
-// });
-
-// const nativeCityName = await getNativeCityName();
-// getAndDisplayInfo(nativeCityName);
