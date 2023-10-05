@@ -15,8 +15,7 @@ describe("getWeather", () => {
 
   it("should call fetch with the correct URL", async () => {
     const cityName = "Kaluga";
-    const url = `https://api.openweathermap.org/data/2.5/weather?units=metric&q=${cityName}&appid=${API_KEY}`;
-
+    const url = `https://api.openweathermap.org/data/2.5/weather?units=metric&lang=ru&q=${cityName}&appid=${API_KEY}`;
     await getWeather(cityName);
     expect(global.fetch).toHaveBeenCalledWith(url);
   });

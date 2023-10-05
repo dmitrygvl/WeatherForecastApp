@@ -8,10 +8,10 @@ describe("test displayApp function", () => {
   });
 
   it("All elements must be rendered", () => {
-    expect(el.querySelector("h1")).toBeTruthy();
+    expect(el.querySelector(".header")).toBeTruthy();
+    expect(el.querySelector(".cities")).toBeTruthy();
     expect(el.querySelector(".input-form")).toBeTruthy();
     expect(el.querySelector(".button-form")).toBeTruthy();
-    // expect(el.querySelector('.history')).toBeTruthy();
-    // expect(el.querySelector('.info')).toBeTruthy();
+    expect(el.querySelector(".history")).toBeTruthy();
   });
 });

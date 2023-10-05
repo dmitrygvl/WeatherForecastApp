@@ -22,7 +22,7 @@ export async function runApp(el) {
       localStorage.setItem("recentSearch", JSON.stringify(recentSearch));
     }
   }
-  //
+
   async function getAndDisplayWeather(cityName) {
     try {
       const weatherData = await getWeather(cityName);

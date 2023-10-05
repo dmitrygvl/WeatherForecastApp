@@ -1,7 +1,0 @@
-.github
-dist
-coverage
-prettierrc.js
-jest.config.js
-jest.setup.js
-webpack.config.js

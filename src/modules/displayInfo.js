@@ -1,4 +1,6 @@
-import pin from "../assets/img/pin.svg";
+import { pin } from "./imagesImport";
+
+// const pin = ''
 
 export const YANDEX_API_KEY = "ce3d2607-7277-4a80-945e-e03352ae7dbd";
 
@@ -8,9 +10,6 @@ export function displayInfo(el, data) {
   const dateNow = new Date();
 
   el.innerHTML = `
-
-  
-
 
       <div class = "block data">
           <div class = "location">
@@ -31,8 +30,5 @@ export function displayInfo(el, data) {
           </div>
 
           <class="block"><image id="map" src="${mapUrl}" /></div>
-  
-
-      
 `;
 }

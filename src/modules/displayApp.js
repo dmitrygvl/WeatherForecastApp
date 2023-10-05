@@ -1,8 +1,7 @@
-export function displayApp(wrapperEl, cityName) {
+export function displayApp(wrapperEl) {
   wrapperEl.innerHTML = `
 
   <header class = "header info"></header>
-
 
     <nav class="cities block">
     
@@ -13,6 +12,5 @@ export function displayApp(wrapperEl, cityName) {
     
       <section class="history block"></section>
     </nav>
-
   `;
 }
