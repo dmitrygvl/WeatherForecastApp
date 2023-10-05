@@ -4,7 +4,3 @@ coverage
 .DS_Store
 src/.DS_Store
 .eslintcache
-.eslintignore
-
-
-README.md
