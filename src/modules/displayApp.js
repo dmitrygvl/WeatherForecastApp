@@ -1,18 +1,18 @@
-export function displayApp(wrapperEl) {
+export function displayApp(wrapperEl, cityName) {
   wrapperEl.innerHTML = `
 
-  <section class="info container-info"></section>
-  
-    <form>
-      <input name="cityName" class="input-form" required autofocus placeholder="Введите город" />
-      <button class="button-form" type="submit">Искать</button>
-    </form>
+  <header class = "header info"></header>
 
-    <section class="history container-history"></section>
-    
-    
 
-    <nav class="history container-history"></nav>
+    <nav class="cities block">
+    
+      <form>
+        <input name="cityName" class="input-form" required autofocus placeholder="Введите город" />
+        <button class="button-form" type="submit">Искать</button>
+      </form>
+    
+      <section class="history block"></section>
+    </nav>
 
   `;
 }

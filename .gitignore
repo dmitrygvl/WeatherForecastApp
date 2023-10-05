@@ -6,7 +6,5 @@ src/.DS_Store
 .eslintcache
 .eslintignore
 
-src/assets/img
-src/modules/imagesImports.js
 
 README.md
