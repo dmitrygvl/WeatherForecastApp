@@ -1,8 +1,10 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
+// const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
+
 const webpack = require("webpack");
 
 module.exports = {
@@ -27,14 +29,15 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "[name].[hash].css",
     }),
-    new CopyWebpackPlugin({
-      patterns: [
-        {
-          from: "src/assets/img/favicon.ico",
-          to: "",
-        },
-      ],
-    }),
+    // new CopyWebpackPlugin({
+    //   patterns: [
+    //     {
+    //       from: "./src/favicon.ico",
+    //       to: "",
+    //     },
+    //   ],
+    // }),
+    new FaviconsWebpackPlugin("src/assets/img/favicon.png"),
   ],
   module: {
     rules: [
