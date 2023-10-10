@@ -2,7 +2,7 @@ import { displayApp } from "./modules/displayApp";
 import { getNativeCityName } from "./modules/getNativeCityName";
 import { getWeather } from "./modules/getWeather";
 import { displayInfo } from "./modules/displayInfo";
-import { displayCityHistory } from "./modules/CityHistory";
+import { displayCityHistory } from "./modules/displayCityHistory";
 
 export async function runApp(el) {
   displayApp(el);
