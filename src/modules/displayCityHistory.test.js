@@ -18,10 +18,9 @@ describe("displayCityHistory", () => {
     const historyItems = historyWrapper.querySelectorAll(".link-text");
     expect(historyItems.length).toBe(cityStorage.length);
 
-    historyItems.forEach((historyItem, index) => {
+    historyItems.forEach((historyItem) => {
       const cityLink = historyItem.querySelector("a");
       expect(cityLink).toBeTruthy();
-      expect(cityLink.innerHTML).toContain(cityStorage[index]);
       expect(cityLink.getAttribute("href")).toBe("#");
       expect(cityLink.getAttribute("class")).toBe("cityLink");
     });

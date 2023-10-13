@@ -1,7 +1,10 @@
 import { getWeather } from "./getWeather";
 import { displayInfo } from "./displayInfo";
-import { recentSearch, addCityToHistory } from "./addCityToHistory";
 import { displayCityHistory } from "./displayCityHistory";
+import { readCities } from "./readCities";
+import { writeCities } from "./writeCities";
+
+const recentSearch = readCities();
 
 export async function getAndDisplayWeather(cityName) {
   const infoWrapper = document.querySelector(".info");
@@ -9,7 +12,7 @@ export async function getAndDisplayWeather(cityName) {
   try {
     const weatherData = await getWeather(cityName);
     displayInfo(infoWrapper, weatherData);
-    addCityToHistory(cityName);
+    writeCities(cityName);
     displayCityHistory(historyWrapper, recentSearch);
     const links = document.querySelectorAll("a");
     links.forEach((link) => {
