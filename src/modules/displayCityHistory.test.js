@@ -1,28 +1,42 @@
 import { displayCityHistory } from "./displayCityHistory";
+import { cityStorage } from "./writeCities";
 
 describe("displayCityHistory", () => {
+  let element;
+
   beforeEach(() => {
-    document.body.innerHTML = `<div class="history"></div>`;
+    element = document.createElement("div");
+    cityStorage.length = 0;
   });
 
-  it("should set the innerHTML and create history items correctly", () => {
-    const historyWrapper = document.querySelector(".history");
-    const cityStorage = ["Moscow", "London", "Paris"];
+  test("should display history heading", () => {
+    displayCityHistory(element);
+    expect(element.innerHTML).toContain("<h2>История поиска</h2>");
+  });
 
-    displayCityHistory(historyWrapper, cityStorage);
+  it("should display each city from cityStorage as a link", () => {
+    cityStorage.push("City 1", "City 2", "City 3");
+    displayCityHistory(element);
 
-    const h2 = historyWrapper.querySelector("h2");
-    expect(h2).toBeTruthy();
-    expect(h2.innerHTML).toContain("История поиска");
+    const links = element.querySelectorAll(".cityLink");
+    expect(links.length).toBe(cityStorage.length);
 
-    const historyItems = historyWrapper.querySelectorAll(".link-text");
+    links.forEach((link, index) => {
+      expect(link.getAttribute("href")).toBe("#");
+      expect(link.getAttribute("class")).toBe("cityLink");
+      expect(link.innerText).toBe(cityStorage[index]);
+    });
+  });
+
+  it("should append each city link to the element", () => {
+    cityStorage.push("City 1", "City 2", "City 3");
+    displayCityHistory(element);
+
+    const historyItems = element.querySelectorAll(".link-text");
     expect(historyItems.length).toBe(cityStorage.length);
 
-    historyItems.forEach((historyItem) => {
-      const cityLink = historyItem.querySelector("a");
-      expect(cityLink).toBeTruthy();
-      expect(cityLink.getAttribute("href")).toBe("#");
-      expect(cityLink.getAttribute("class")).toBe("cityLink");
+    historyItems.forEach((item) => {
+      expect(item.querySelector(".cityLink")).toBeTruthy();
     });
   });
 });

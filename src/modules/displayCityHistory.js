@@ -1,4 +1,6 @@
-export function displayCityHistory(el, cityStorage) {
+import { cityStorage } from "./writeCities";
+
+export function displayCityHistory(el) {
   el.innerHTML = `
     <h2>История поиска</h2>
   `;

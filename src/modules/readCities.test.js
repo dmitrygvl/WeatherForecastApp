@@ -1,8 +1,6 @@
 import { readCities } from "./readCities";
 
 describe("readCities", () => {
-  let getItemMock;
-
   afterEach(() => {
     jest.clearAllMocks();
   });

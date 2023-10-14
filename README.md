@@ -28,6 +28,6 @@
   <li>Unit tests</li>
 </ul>
 
-Codesandbox https://githubbox.com/dmitrygvl/WeatherForecastApp/tree/development
+Codesandbox https://githubbox.com/dmitrygvl/WeatherForecastApp/tree/main
 
 Result of work you can see in https://dmitrygvl.github.io/WeatherForecastApp/

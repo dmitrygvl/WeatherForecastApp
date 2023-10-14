@@ -1,13 +1,13 @@
-import { readCities, recentSearch } from "./readCities";
+import { readCities } from "./readCities";
+
+export const cityStorage = readCities();
 
 export function writeCities(cityName) {
-  // const recentSearch = readCities();
-
-  if (recentSearch.length >= 10) {
-    recentSearch.shift();
+  if (cityStorage.length >= 10) {
+    cityStorage.shift();
   }
-  if (!recentSearch.includes(cityName)) {
-    recentSearch.push(cityName);
-    localStorage.setItem("recentSearch", JSON.stringify(recentSearch));
+  if (!cityStorage.includes(cityName)) {
+    cityStorage.push(cityName);
+    localStorage.setItem("recentSearch", JSON.stringify(cityStorage));
   }
 }

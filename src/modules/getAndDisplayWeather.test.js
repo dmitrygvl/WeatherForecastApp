@@ -2,20 +2,14 @@ import { getAndDisplayWeather } from "./getAndDisplayWeather";
 import { getWeather } from "./getWeather";
 import { displayInfo } from "./displayInfo";
 import { displayCityHistory } from "./displayCityHistory";
-import { readCities } from "./readCities";
 import { writeCities } from "./writeCities";
-
-// jest.mock("./getWeather.js");
-// jest.mock("./displayInfo.js");
-// jest.mock("./displayCityHistory.js");
-// jest.mock("./readCities.js");
-// jest.mock("./writeCities.js");
+import { addCitiesLinks } from "./addCitiesLinks";
 
 jest.mock("./getWeather");
 jest.mock("./displayInfo");
 jest.mock("./displayCityHistory");
-jest.mock("./readCities");
 jest.mock("./writeCities");
+jest.mock("./addCitiesLinks");
 
 describe("getAndDisplayWeather", () => {
   let cityName;
@@ -39,6 +33,7 @@ describe("getAndDisplayWeather", () => {
     mockWriteCities = writeCities.mockImplementation();
     mockDisplayCityHistory = displayCityHistory.mockImplementation();
     jest.clearAllMocks();
+    addCitiesLinks.mockClear();
   });
 
   afterEach(() => {
@@ -57,44 +52,28 @@ describe("getAndDisplayWeather", () => {
 
   it("calls displayInfo with the correct infoWrapper and weatherData", async () => {
     const weatherData = {
-      /* mocked weather data */
+      name: "London",
     };
     mockGetWeather.mockResolvedValueOnce(weatherData);
     await getAndDisplayWeather(cityName);
     expect(mockDisplayInfo).toHaveBeenCalledWith(infoWrapper, weatherData);
   });
 
-  it("calls writeCities with the correct cityName", async () => {
-    await getAndDisplayWeather(cityName);
-    expect(mockWriteCities).toHaveBeenCalledWith(cityName);
+  it("should call writeCities with the name from weatherData", async () => {
+    const weatherData = { name: "London" };
+    getWeather.mockResolvedValue(weatherData);
+    await getAndDisplayWeather("London");
+    expect(writeCities).toHaveBeenCalledWith(weatherData.name);
+  });
+  it("should call addCitiesLinks", async () => {
+    await getAndDisplayWeather("London");
+    expect(addCitiesLinks).toHaveBeenCalled();
   });
 
-  it("calls displayCityHistory with the correct historyWrapper and recentSearch", async () => {
+  it("calls displayCityHistory with the correct historyWrapper", async () => {
     await getAndDisplayWeather(cityName);
-    expect(mockDisplayCityHistory).toHaveBeenCalledWith(
-      historyWrapper,
-      readCities(),
-    );
+    expect(mockDisplayCityHistory).toHaveBeenCalledWith(historyWrapper);
   });
-
-  // it("adds event listener to each link", async () => {
-  //   const link1 = document.createElement("a");
-  //   const link2 = document.createElement("a");
-  //   document.body.appendChild(link1);
-  //   document.body.appendChild(link2);
-  //   const mockAddEventListener = jest.fn();
-  //   link1.addEventListener = mockAddEventListener;
-
-  //   await getAndDisplayWeather(cityName);
-
-  //   const links = document.querySelectorAll("a");
-  //   links.forEach((link) => {
-  //     expect(mockAddEventListener).toHaveBeenCalledWith(
-  //       "click",
-  //       expect.any(Function),
-  //     );
-  //   });
-  // });
 
   it("logs error when getWeather throws an error", async () => {
     const error = new Error("Failed to fetch weather data");
