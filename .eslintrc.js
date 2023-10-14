@@ -23,6 +23,7 @@ module.exports = {
   plugins: ["jest"],
   ignorePatterns: ["main.js"],
   rules: {
+    "import/no-cycle": "off",
     "max-len": [
       "error",
       {

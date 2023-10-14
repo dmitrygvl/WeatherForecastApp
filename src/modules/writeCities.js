@@ -1,7 +1,7 @@
-import { readCities } from "./readCities";
+import { readCities, recentSearch } from "./readCities";
 
 export function writeCities(cityName) {
-  const recentSearch = readCities();
+  // const recentSearch = readCities();
 
   if (recentSearch.length >= 10) {
     recentSearch.shift();
