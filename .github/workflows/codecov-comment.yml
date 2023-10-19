@@ -28,4 +28,4 @@ jobs:
         uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: coverage/clover.xml, coverage/coverage-final.json, coverage/lcov.info
+          directory: ./coverage
