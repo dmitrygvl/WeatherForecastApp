@@ -1,6 +1,4 @@
 import "./styles/styles.css";
-import { runWeatherApp } from "./runWeatherApp";
+import { runApp } from "./runApp";
 
-runWeatherApp(document.getElementById("app"));
-
-alert("test");
+runApp(document.getElementById("app"));
