@@ -10,7 +10,7 @@ exports[`testing function displayWeatherInfo should render weather information c
              
       </div>
       <div class="description"> 
-          <p class="date">19.10.2023</p>
+          <p class="date">23.10.2023</p>
           <p class="weather-text">Cloudy - Overcast clouds</p>
           </div>
           <div class="box-image"><img class="icon-weather" src="https://openweathermap.org/img/wn/04d@2x.png" alt="Icon weather">

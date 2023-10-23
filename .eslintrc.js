@@ -38,7 +38,7 @@ module.exports = {
     "no-unused-vars": "off",
     "consistent-return": "off",
     "prefer-promise-reject-errors": "off",
-    "no-await-in-loop": "off",
+    // "no-await-in-loop": "off",
     "func-names": "off",
   },
 };
